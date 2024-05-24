@@ -1,11 +1,6 @@
 package com.example.md4_minitest_w2.model;
 
-import org.springframework.stereotype.Component;
-import org.springframework.validation.Errors;
-import org.springframework.validation.ValidationUtils;
-
 import javax.persistence.*;
-import javax.validation.Validator;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 
@@ -25,8 +20,12 @@ public class Computer {
     @JoinColumn(name = "type_id")
     private Type type;
 
+    private String image;
+
     public Computer() {
     }
+
+    // Getters and setters...
 
     public Long getId() {
         return id;
@@ -58,5 +57,13 @@ public class Computer {
 
     public void setType(Type type) {
         this.type = type;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

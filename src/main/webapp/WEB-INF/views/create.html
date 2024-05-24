@@ -1,10 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="/layout :: head">
+    <title>Create Computer</title>
 </head>
 <body>
-
+<h3>Add Computer</h3>
+<p>
+    <a th:href="@{/computer}">
+        Back to computer list
+    </a>
+</p>
+<div id="form">
+    <form action="/computer/create" th:object="${computer}"
+          method="POST" novalidate="novalidate" enctype="multipart/form-data">
+        <input type="hidden" th:field="*{id}"/>
+        <div>
+            <label for="code">Code</label>
+            <input type="text" id="code" th:field="*{code}"/> <br>
+            <p th:if="${#fields.hasErrors('code')}" th:errors="*{code}">Name Error</p>
+        </div>
+        <div>
+            <label for="name">Name</label>
+            <input type="text" id="name" th:field="*{name}"/> <br>
+            <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</p>
+        </div>
+        <div>
+            <label for="type">Type</label>
+            <select id="type" th:field="*{type}">
+                <option th:each="p : ${types}" th:value="${p.id}" th:text="${p.name}"></option>
+            </select>
+            <p th:if="${#fields.hasErrors('type')}" th:errors="*{type}">Name Error</p>
+        </div>
+        <div>
+            <label for="file">Image</label>
+            <input type="file" id="file" name="file" accept="image/*"/> <br>
+            <p th:if="${#fields.hasErrors('image')}" th:errors="*{image}">Image Error</p>
+        </div>
+        <input type="submit" value="Save"/>
+    </form>
+</div>
+<footer th:replace="/layout :: footer"></footer>
 </body>
 </html>
