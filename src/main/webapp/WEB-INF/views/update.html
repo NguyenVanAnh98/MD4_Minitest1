@@ -11,8 +11,8 @@
     </a>
 </p>
 <div id="form">
-    <form th:action="@{/update/{id}(id=${computer.getId()})}" th:object="${computer}"
-          method="POST" novalidate="novalidate">
+    <form th:action="@{/computer/update/{id}(id=${computer.getId()})}" th:object="${computer}"
+          method="POST" novalidate="novalidate" enctype="multipart/form-data">
         <div>
             <label for="code">Code</label>
             <input type="text" id="code" th:field="*{code}"/> <br>
@@ -30,6 +30,11 @@
                 <option th:each="p : ${types}" th:value="${p.id}" th:text="${p.name}"></option>
             </select>
             <p th:if="${#fields.hasErrors('type')}" th:errors="*{type}">Name Error</p>
+        </div>
+        <div>
+            <label for="file">Image</label>
+            <input type="file" id="file" name="file" accept="image/*"/>
+            <p th:if="${#fields.hasErrors('image')}" th:errors="*{image}" class="error">Image Error</p>
         </div>
         <input type="submit" value="Edit"/>
     </form>

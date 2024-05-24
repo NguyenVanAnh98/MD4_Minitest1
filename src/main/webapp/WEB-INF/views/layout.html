@@ -4,17 +4,34 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <title>Minitest Jave Web Backend Development Spring MVC | Nguyễn Hải Nhật Huy - C0124I1</title>
-
+    <title>Minitest Java Web Backend Development Spring MVC</title>
     <style>
-        h3{background-color: blue; color: white; padding: 10px 0 10px 20px;}
-        footer{margin: 10px 0;}
+        body {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        h3 {
+            background-color: blue;
+            color: white;
+            padding: 10px 20px;
+            margin: 0;
+            border-radius: 5px 5px 0 0;
+        }
+
+        footer {
+            margin: 10px 0;
+            text-align: center;
+            color: #555;
+            font-size: 14px;
+        }
 
         #customers {
-            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
             border-collapse: collapse;
             width: 100%;
+            margin-bottom: 20px;
         }
 
         #customers td, #customers th {
@@ -22,30 +39,32 @@
             padding: 8px;
         }
 
-        #customers tr:nth-child(even){background-color: #f2f2f2;}
+        #customers tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
 
-        #customers tr:hover {background-color: #ddd;}
+        #customers tr:hover {
+            background-color: #ddd;
+        }
 
         #customers th {
-            padding-top: 12px;
-            padding-bottom: 12px;
+            padding: 12px;
             text-align: left;
             background-color: #4CAF50;
             color: white;
         }
 
-        input[type=text],input[type=email]{
+        input[type=text], input[type=email] {
             width: 100%;
-            padding: 12px 0;
+            padding: 12px;
             margin: 8px 0;
-            display: inline-block;
             border: 1px solid #ccc;
             border-radius: 4px;
             box-sizing: border-box;
         }
 
         input[type=submit] {
-            width: 300px;
+            width: 100%;
             background-color: #4CAF50;
             color: white;
             padding: 14px 20px;
@@ -62,18 +81,46 @@
 
         #form {
             width: 500px;
+            margin: 20px auto;
             border-radius: 5px;
-            background-color: #f2f2f2;
+            background-color: #fff;
             padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
-        .notify span{font-size: 15px; color: blue;}
+        .notify span {
+            font-size: 15px;
+            color: blue;
+        }
+
+        @media (max-width: 600px) {
+            #form {
+                width: 90%;
+                padding: 10px;
+            }
+
+            input[type=submit] {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
+<div id="form">
+    <h3>Form Title</h3>
+    <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <input type="submit" value="Submit">
+    </form>
+</div>
 
 <footer th:fragment="footer">
-    &copy;
+    &copy; 2024 Your Company. All rights reserved.
 </footer>
 </body>
 </html>

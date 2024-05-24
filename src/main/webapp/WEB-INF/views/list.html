@@ -2,18 +2,86 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:replace="/layout :: head">
     <title>List Computers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        h3 {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            margin: 0;
+            border-radius: 5px 5px 0 0;
+        }
+
+        p {
+            text-align: center;
+            margin: 20px;
+        }
+
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .notify {
+            text-align: center;
+            margin: 20px;
+        }
+
+        .notify span {
+            font-size: 15px;
+            color: blue;
+        }
+
+        #computer {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        #computer th, #computer td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        #computer th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        #computer tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #computer tr:hover {
+            background-color: #ddd;
+        }
+
+        footer {
+            margin: 20px 0;
+            text-align: center;
+            color: #555;
+            font-size: 14px;
+        }
+    </style>
 </head>
 <body>
 <h3>Computers</h3>
 <p>
-    <a th:href="@{/computer/create}">
-        Add new Computer
-    </a>
-</p>
-<p>
-    <a th:href="@{/type}">
-        Type
-    </a>
+    <a th:href="@{/computer/create}">Add new Computer</a>
+    <a th:href="@{/type}">Type</a>
 </p>
 <div class="notify">
     <div th:if="${message}">
@@ -21,7 +89,7 @@
     </div>
 </div>
 
-<table id = "computer" class="table">
+<table id="computer" class="table">
     <thead>
     <tr>
         <th>STT</th>
@@ -30,19 +98,18 @@
         <th>TYPE</th>
         <th>Update</th>
         <th>Delete</th>
-        <th>IMG</th>d
-
+        <th>IMG</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="c,cStatus : ${computers}">
+    <tr th:each="c, cStatus : ${computers}">
         <td th:text="${cStatus.count}"></td>
-        <td th:text="${c.getCode()}"></td>
-        <td th:text="${c.getName()}"></td>
-        <td th:text="${c.getType().getName()}"></td>
-        <td><a th:href="@{/computer/update/{id}(id=${c.getId()})}">update</a></td>
-        <td><a th:href="@{/computer/delete/{id}(id=${c.getId()})}">delete</a></td>
-        <td><img width="100" height="100" th:src="@{'/image/' + ${c.image}}"></td>
+        <td th:text="${c.code}"></td>
+        <td th:text="${c.name}"></td>
+        <td th:text="${c.type.name}"></td>
+        <td><a th:href="@{/computer/update/{id}(id=${c.id})}">update</a></td>
+        <td><a th:href="@{/computer/delete/{id}(id=${c.id})}">delete</a></td>
+        <td><img width="100" height="100" th:src="@{'/image/' + ${c.image}}" alt="Computer Image"></td>
     </tr>
     </tbody>
 </table>
