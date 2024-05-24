@@ -24,8 +24,13 @@ public class TypeService implements ITypeService {
     }
 
     @Override
-    public Optional<Type> findById(Long id) {
-        return iTypeRepo.findById(id);
+    public void update(Type type) {
+
+    }
+
+    @Override
+    public Type findById(Long id) {
+        return iTypeRepo.findById(id).orElseThrow(() -> new RuntimeException("Type not found"));
     }
 
     @Override

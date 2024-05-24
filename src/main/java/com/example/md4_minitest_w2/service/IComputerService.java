@@ -4,5 +4,10 @@ import com.example.md4_minitest_w2.model.Computer;
 import com.example.md4_minitest_w2.model.Type;
 
 public interface IComputerService extends IGenerateService<Computer> {
-Iterable<Computer> findAllByType(Type type);
+        Iterable<Computer> findAllByType(Type type);
+
+
+
+    Boolean existsByCode(String code);
+    Boolean exitsById(Long id);
 }
